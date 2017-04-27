@@ -3,19 +3,82 @@ body {
 	font-family: serif;
 }
 .navbar-form {
-	padding-right: 30px;
+	margin: 0;
+}
+.nabar, .navbar-header{
+	min-height: 120px;
+	
+}
+.container-fluid {
+	margin-top: 120px;
+}
+.navbar-brand {
+	padding: 0;
 }
 .navbar-default{
 	margin: auto;
 }
+
 .gray-background{
 	background-color: #999999;
 }
 .vertical-align {
-	border: 1px none orange;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+.btn-default {
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 40px;
+    background-color: #595959;
+    border-color: #fff; 
+}
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default {
+    color: #fff;
+    background-color: #808080;
+    border-color: #fff; 
+}
+
+.btn-success {
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 50px;
+    background-color: #ace600;
+    border-color: #ace600; 
+}
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open>.dropdown-toggle.btn-success {
+    color: #fff;
+    background-color: #bfff00;
+    border-color: #bfff00;
+}
+.number {
+	background-image: url(../images/tooltip-bg.png);
+	background-repeat: no-repeat;
+	min-height: 95px;
+	min-width: 83px;
+	padding-top: 15px;
+}
+.number:hover, .number:focus, .number:active {
+	background-image: url(../images/tooltip-hover.png);
+	background-repeat: no-repeat;
+}
+#wrapper .popup {
+position:absolute;
+visibility:hidden;
+}
+
+#wrapper:hover .popup {
+visibility:visible;
+}
+.popupbox {
+	text-align: center;
+	background-color: #fff;
+	border: 2px solid #ace600;
+	border-radius: 5px;
+	font-size: 20px;
+	margin-top: 40px;
+
 }
 
 .hbg2 {
@@ -24,6 +87,7 @@ body {
 	background-position: center;
 	background-size: cover;
 	min-height: 400px;
+	background-attachment: fixed;
 }
 .hbg5 {
 	background-image: url(../images/hbg5.png);
@@ -38,16 +102,46 @@ body {
 	background-position: center;
 	background-size: cover;
 	min-height: 400px;
+	background-attachment: fixed;
 }
 .paddingtb {
 	padding-top: 40px;
 	padding-bottom: 40px;
 }
+.padding-top {
+	padding-top: 32px;
+}
 .center-list {
 	list-style-type: none;
-	display:inline-block;
+	display:inline;
 	color: #fff;
 	padding-bottom: 20px;
 	padding-right: 20px;
 	text-align: center;
+}
+.horizontal-list {
+	list-style-type: none;
+	display: inline-flex;
+}
+
+.carousel-caption {
+	position: relative;
+}
+
+.center-carousel-image-container {
+	border: 1px none red;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.center-carousel-image {
+	border: 1px none purple;
+}
+.carousel-control.right {
+	background-image: none;
+}
+.carousel-control.left {
+	background-image: none;
 }
