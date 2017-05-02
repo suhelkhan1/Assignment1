@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Vital Partners</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/validation.js"></script>
+</head>
+<body>
+	<!-- navbar -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<div class="row">
+							<div class="col-md-2">						
+								<a class="navbar-brand" href="#"><img src="images/logo.png" /></a>		
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+							</div>
+							<div class="col-md-8 pull-right padding-top">
+								<div class="collapse navbar-collapse" id="myNavbar">
+									<form class="navbar-form navbar-right">
+										<span>Call Us Today! (02) 9017 8413</span>
+										<div class="form-group">
+											<input type="text" class="form-control" placeholder="Search">
+										</div>
+									</form>
+									<ul class="nav navbar-nav navbar-right">
+										<li><a href="#banner">Home</a></li>
+										<li><a href="#">Dating Blog</a></li>
+										<li><a href="#">Who We Help</a></li>
+										<li><a href="#">Why Vital</a></li>
+										<li><a href="#">Reviews</a></li>
+										<li><a href="#">Contact Us</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>		
+		</div>
+	</nav>
+	<!--navabar ends-->
+	<div class="container-fluid">
+		<div class="row banner-image">
+			<div class="col-md-12 vertical-align">
+				<div class="row">
+					<h1 style="color: #fff; margin-top: 55px;">Thanks for your inquiry</h1>
+				</div>
+			</div>
+		</div>
+		<form name="form" onSubmit="return formValidate();" data-toggle="validator" role="form">
+			<div class="row padding-top">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-10 col-md-offset-2">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="firstName">First Name</label>
+										<input type="text" class="form-control" name="firstName" placeholder="First Name">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="lastName">Last Name</label>
+										<input type="text" class="form-control" name="lastName" placeholder="Last Name">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="phoneNo">Phone No</label>
+										<input type="number" class="form-control" name="phoneNo" placeholder="Phone No">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="officeNo">Office No</label>
+										<input type="number" class="form-control" name="officeNo" placeholder="Office No">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="emailInput">Email</label>
+										<input type="email" class="form-control" name="emailInput" placeholder="Email">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="passwordInput">Password</label>
+										<input type="password" class="form-control" name="passwordInput" placeholder="Password">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="passwordConfirm">Confirm Password</label>
+										<input type="password" class="form-control" name="passwordConfirm" placeholder="Confirm Password">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="dateOfBirth">Date of Birth</label>
+										<input type="date" class="form-control" name="dateOfBirth">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="age">Age</label>
+										<input type="number" class="form-control" name="age" placeholder="Age" disabled>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="gender">Gender</label><br>
+										<div class="checkbox-inline"><label><input type="checkbox" id="male">Male</label></div>
+										<div class="checkbox-inline"><label><input type="checkbox" id="female">Female</label></div>
+									</div>
+								</div>
+							</div>
+							<div class="row">								
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="gender">Interest</label><br>
+										<div class="checkbox-inline"><label><input type="checkbox">Biking</label></div>
+										<div class="checkbox-inline"><label><input type="checkbox">Reading</label></div>
+										<div class="checkbox-inline"><label><input type="checkbox">Playing</label></div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="about">About</label>
+										<textarea class="form-control"  name="about"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="row">								
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="country">Country</label>
+										<select class="form-control" name="country">
+											<option>Select Country</option>
+											<option>India</option>
+											<option>USA</option>
+											<option>Australia</option>
+											<option>Other</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="otherCountry">Other</label>
+										<input type="text" class="form-control" name="otherCountry" placeholder="Mention Country if Selected Other">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="uploadFile">Upload File</label>
+										<input type="file" class="form-control" name="uploadFile">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2 col-md-offset-3">
+									<button type="submit" class="btn btn-success" name="submit" value="Submit">Submit</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<!-- FOOTER -->
+		<footer>
+			<div class="row" style="background-color: #262626; margin-top: 30px;">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1">
+							<div class="row">
+								<div class="col-md-3">
+									<p class="pull-right"><a href="index.html" style="color : #fff;">&copy; VitalPartners.com.au</a></p>
+								</div>
+								<div class="col-md-4">
+									<p>
+										<a href="#">Contact</a> | 
+										<a href="#">Terms of Use</a> | 
+										<a href="#">Privacy Policy</a> | 
+										<a href="#">Disclaimer</a>
+									</p>
+								</div>
+								<div class="col-md-3" style="color : #fff;">
+									<p class="pull-right">FOLLOW US: 
+										<span class="fa fa-facebook" area-hidden="true"></span>
+										<span class="fa fa-linkedin" area-hidden="true"></span>
+										<span class="fa fa-youtube" area-hidden="true"></span>
+										<span class="fa fa-google-plus" area-hidden="true"></span>
+										<span class="fa fa-twitter" aria-hidden="true"></span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>
