@@ -12,22 +12,66 @@ var appValidations;
 				_this.submitEvent(event);
 			});
 
-			$('#dob').on('input', function(event) {
+			/*$('input').on('change', function(event) {
+				event.preventDefault();
+				_this.submitEvent(event);
+			});*/
+
+			$('#dateOfBirth').on('input', function(event) {
 				_this.dobChanged(event);
 			});
-
-			var $select = $('#country');
-			$.getJSON('js/country.json', function(data) {				
+	
+			$.getJSON('js/country.json', function(data) {
+				var $select = $('#country');		
 				$select.html("");
+				$select.append('<option value="default">Select Country</option');
 				for (var i = 0; i < data['country'].length; i++) {
-					$select.append('<option id="' + data['country'][i]['id'] + '">' + data['country'][i]['name'] + '</option');
+					$select.append('<option value="' + data['country'][i]['id'] + '" id="' + data['country'][i]['id'] + '">' + data['country'][i]['name'] + '</option');
 				};
 			});
-		},		
+
+			$('#country').on('input', function(data) {
+				$.getJSON('js/country.json', function(data) {
+					_this.setState(data);
+				});
+			});
+
+			$('#state').on('input', function(data) {
+				$.getJSON('js/country.json', function(data) {
+					_this.setCity(data);
+				});
+			});
+		},
+		setState: function(data) {
+			for (var i = 0; i < data['country'].length; i++) {
+				if ($('#country').val() == data['country'][i]['id']) {
+					var $select = $('#state');		
+					$select.html("");
+					$select.append('<option value="default">Select State</option');
+					for (var j = 0; j < data['country'][i]['states'].length; j++) {
+						$select.append('<option value="' + data['country'][i]['states'][j]['id'] + '" id="' + data['country'][i]['states'][j]['id'] + '">' + data['country'][i]['states'][j]['name'] + '</option>');
+					};
+				}
+			};
+		},
+		setCity: function(data) {
+			for (var i = 0; i < data['country'].length; i++) {
+				for (var j = 0; j < data['country'][i]['states'].length; j++) {
+					if ($('#state').val() == data['country'][i]['states'][j]['id']) {
+						var $select = $('#city');		
+						$select.html("");
+						$select.append('<option value="default">Select City</option');
+						for (var k = 0; k < data['country'][i]['states'][j]['cities'].length; k++) {
+							$select.append('<option>' + data['country'][i]['states'][j]['cities'][k]['name']  + '</option>');
+						}
+					}
+				};
+			};
+		},
 		dobChanged: function(event) {
-			var date_of_birth = document.form.dateOfBirth.valueAsDate;
+			var date_of_birth = $('[name = "dateOfBirth"]');
 			var today = new Date();
-			var diff = today.getTime() - date_of_birth.getTime();
+			var diff = today.getTime() - date_of_birth[0].valueAsDate.getTime();;
 			var age = Math.floor(diff/31557600000);
 			$('#age').val(age);
 		},
@@ -49,168 +93,167 @@ var appValidations;
 			 this.validateUploadFile();
 		},
 		validateFirstName: function() {
-			var first_name = document.form.firstName;
+			var first_name = $('#firstName');
 
-			if (first_name.value && first_name.value.match(/^[a-zA-Z]+$/)) {
-				$('#firstName').html('');
+			if (first_name.val() && first_name.val().match(/^[a-zA-Z]+$/)) {
+				$('#firstNameError').html('');
 			} else{
 				first_name.focus();
-				$('#firstName').html('aesa kon naam likhta hai bhai');
+				$('#firstNameError').html('Please enter proper first name.');
 			};
 		},
 		validateLastName: function() {
-			var last_name = document.form.lastName;
+			var last_name = $('#lastName');
 
-			if (last_name.value && last_name.value.match(/^[a-zA-Z]+$/)) {
-				$('#lastName').html('');
+			if (last_name.val() && last_name.val().match(/^[a-zA-Z]+$/)) {
+				$('#lastNameError').html('');
 			} else{
 				last_name.focus();
-				$('#lastName').html('Please enter Last Name correctly');
+				$('#lastNameError').html('Please enter proper last name.');
 			};
 		},
 		validatePhoneNumber: function() {
-			var phone_number = document.form.phoneNo;
+			var phone_number = $('#phoneNo');
 
-			if (phone_number.value && phone_number.value.match(/^[0-9]+$/)) {
-				$('#phoneNo').html('');
+			if (phone_number.val() && phone_number.val().match(/\+\d{12}/)) {
+				$('#phoneNoError').html('');
 			} else{
 				phone_number.focus();
-				$('#phoneNo').html('Phone Number must have numeric characters only');
+				$('#phoneNoError').html('Phone Number must be enter in +911234567890 format');
 			};
 		},
 		validateOfficeNumber: function() {
-			var office_number = document.form.officeNo;
+			var office_number = $('#officeNo');
 
-			if (office_number.value && office_number.value.match(/^[0-9]+$/)) {
-				$('#officeNo').html('');
+			if (office_number.val() && office_number.val().match(/\+\d{12}/)) {
+				$('#officeNoError').html('');
 			} else{
 				office_number.focus();
-				$('#officeNo').html('Office Number must have numeric characters only');
+				$('#officeNoError').html('Office Number must be enter in +911234567890 format');
 			};
 		},
 		validateEmail: function() {
-			var email = document.form.emailInput;
+			var email = $('#emailInput');
 
-			if (email.value && email.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
-				$('#emailInput').html('');
+			if (email.val() && email.val().match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+				$('#emailInputError').html('');
 			} else{
 				email.focus();
-				$('#emailInput').html('You have entered an invalid email address');
+				$('#emailInputError').html('You have entered an invalid email address');
 			};
 		},
 		validatePassword: function() {
-			var password = document.form.passwordInput;
+			var password = $('#passwordInput');
 
-			if (password.value && password.value.match(/s/)) {
-				$('#passwordInput').html('');
+			if (password.val() && password.val().match(/s/)) {
+				$('#passwordInputError').html('');
 			} else{
 				password.focus();
-				$('#passwordInput').html('You have entered an invalid email address');
+				$('#passwordInputError').html('You have entered an invalid password');
 			};
 		},
 		validateConfirmPassword: function() {
-			var password = document.form.passwordInput;
-			var confim_password = document.form.passwordConfirm;
+			var password = $('#passwordInput');
+			var confim_password = $('#passwordConfirm');
 
-			if (password.value && confim_password.value === password.value) {
-				$('#passwordConfirm').html('');
+			if (password.val() && confim_password.val() === password.val()) {
+				$('#passwordConfirmError').html('');
 			} else{
 				confim_password.focus();
-				$('#passwordConfirm').html('Passwords entered does not match');
+				$('#passwordConfirmError').html('Passwords entered does not match');
 			};
 		},
 		validateDateOfBirth: function() {
-			var bate_of_birth = document.form.dateOfBirth;
-			var date = new Date(bate_of_birth.value);
+			var bate_of_birth = $('#dateOfBirth');
+			var date = new Date(bate_of_birth.val());
 			var year = date.getFullYear();
 
 			if (!isNaN(year) && year > 1900 && year < 1999) {
-				$('#dateOfBirth').html('');
+				$('#dateOfBirthError').html('');
 			} else{
 				bate_of_birth.focus();
-				$('#dateOfBirth').html('Please enter proper Date of Birth');
+				$('#dateOfBirthError').html('Please enter proper Date of Birth');
 			};
 		},
 		validateDateOfBirth: function() {
-			var bate_of_birth = document.form.dateOfBirth;
-			var date = new Date(bate_of_birth.value);
+			var bate_of_birth = $('#dateOfBirth');
+			var date = new Date(bate_of_birth.val());
 			var year = date.getFullYear();
 
 			if (!isNaN(year) && year > 1900 && year < 1999) {
-				$('#dateOfBirth').html('');
+				$('#dateOfBirthError').html('');
 			} else{
 				bate_of_birth.focus();
-				$('#dateOfBirth').html('Please enter proper Date of Birth');
+				$('#dateOfBirthError').html('Please enter proper Date of Birth');
 			};
 		},
 		validateGender: function() {
-			var gender = document.form.gender;
+			var gender = $('[name = "gender"]');
 			if (gender[0].checked) {
-				$('#gender').html('');
+				$('#genderError').html('');
 			} else if (gender[1].checked) {
-				$('#gender').html('');
+				$('#genderError').html('');
 			} else{
 				gender[0].focus();
-				$('#gender').html('Select Male/Female');
+				$('#genderError').html('Select Male/Female');
 			};
 		},
 		validateInterest: function() {
-			var bike = document.form.biking;
-			var read = document.form.reading;
-			var play = document.form.playing;
-			if (bike.checked) {
-				$('#interest').html('');
-			} else if (read.checked) {
-				$('#interest').html('');
-			} else if (play.checked) {
-				$('#interest').html('');
+			var bike = $('#biking');
+			var read = $('#reading');
+			var play = $('#playing');
+			if (bike[0].checked) {
+				$('#interestError').html('');
+			} else if (read[0].checked) {
+				$('#interestError').html('');
+			} else if (play[0].checked) {
+				$('#interestError').html('');
 			} else{
 				bike.focus();
-				$('#interest').html('Select Any One Interest');
+				$('#interestError').html('Select Any One Interest');
 			};
 		},
 		validateAbout: function() {
-			var about_you = document.form.about;
+			var about_you = $('#about');
 
-			if (about_you.value && about_you.value.match(/^[a-z0-9][a-z0-9._\--]*$/)) {
-				$('#about').html('');
+			if (about_you.val() && about_you.val().match(/^[a-z0-9][a-z0-9._\--]*$/)) {
+				$('#aboutError').html('');
 			} else{
 				about_you.focus();
-				$('#about').html('Please input correctly');
+				$('#aboutError').html('Please input correctly');
 			};
 		},
 		validateCountry: function () {
-			var country = document.form.country;
-			var otherCountry = document.form.otherCountry;
-			if (country.value == "default"){
-				$('#country').html('Please Select country');				
-			} else if (country.value == "other") {
-				if(/^[a-z0-9][a-z0-9._\-]*$/.exec(otherCountry.value)){
-					$('#otherCountry').html('');
-				} else {
-					$('#otherCountry').html('Mention Country if Selected Other');
-				}
+			var country = $('#country');
+			var state = $('#state');
+			var city = $('#city');
+			if (country.val() == "default"){
+				$('#countryError').html('Please Select country');				
+			} else if (state.val() == "default") {
+				$('#stateError').html('Please Select state');
+			} else if (city.val() == "default") {
+				$('#cityError').html('Please Select city');
 			} else {
-				$('#country').html('');
+				$('#countryError').html('');
 			}
 		},
 		validateUploadFile: function () {
-			var upload_file = document.form.uploadFile;
+			var upload_file = $('#uploadFile');
 			var allowed_extensions = new Array("jpg","png","gif");
-			var file_name = upload_file.value.replace(/^.*[\\\/]/, '')
+			var file_name = upload_file.val().replace(/^.*[\\\/]/, '');
 		    var file_extension = file_name.split('.').pop();
 
-		    if (upload_file.value !== "") {
+		    if (upload_file.val() !== "") {
 		    	for(var i = 0; i <= allowed_extensions.length; i++) {
 			        if(allowed_extensions[i]==file_extension) {
-			            $('#uploadFile').html('');
+			            $('#uploadFileError').html('');
 			            break;
 			        } else {
-				    	$('#uploadFile').html('Supported file extentions are JPG, PNG, GIF.');
+				    	$('#uploadFileError').html('Supported file extentions are JPG, PNG, GIF.');
 				    }
 			    }
 		    } else {
-		    	$('#uploadFile').html('Please upload file.');
+		    	$('#uploadFileError').html('Please upload file.');
 		    }
 		}
 	}

@@ -72,15 +72,15 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="firstName">First Name</label>
-										<input type="text" class="form-control" name="firstName" placeholder="First Name">
-										<p id="firstName" style="color: red;"></p>
+										<input type="text" class="form-control" id="firstName" placeholder="First Name">
+										<p id="firstNameError" style="color: red;"></p>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="lastName">Last Name</label>
-										<input type="text" class="form-control" name="lastName" placeholder="Last Name">
-										<p id="lastName" style="color: red;"></p>
+										<input type="text" class="form-control" id="lastName" placeholder="Last Name">
+										<p id="lastNameError" style="color: red;"></p>
 									</div>
 								</div>
 							</div>
@@ -88,15 +88,15 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="phoneNo">Phone No</label>
-										<input type="number" class="form-control" name="phoneNo" placeholder="Phone No">
-										<p id="phoneNo" style="color: red;"></p>
+										<input type="text" class="form-control" id="phoneNo" placeholder="Phone No">
+										<p id="phoneNoError" style="color: red;"></p>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="officeNo">Office No</label>
-										<input type="number" class="form-control" name="officeNo" placeholder="Office No">
-										<p id="officeNo" style="color: red;"></p>
+										<input type="text" class="form-control" id="officeNo" placeholder="Office No">
+										<p id="officeNoError" style="color: red;"></p>
 									</div>
 								</div>
 							</div>
@@ -104,15 +104,15 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="emailInput">Email</label>
-										<input type="email" class="form-control" name="emailInput" placeholder="Email">
-										<p id="emailInput" style="color: red;"></p>
+										<input type="email" class="form-control" id="emailInput" placeholder="Email">
+										<p id="emailInputError" style="color: red;"></p>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="passwordInput">Password</label>
-										<input type="password" class="form-control" name="passwordInput" placeholder="Password">
-										<p id="passwordInput" style="color: red;"></p>
+										<input type="password" class="form-control" id="passwordInput" placeholder="Password">
+										<p id="passwordInputError" style="color: red;"></p>
 									</div>
 								</div>
 							</div>
@@ -120,15 +120,15 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="passwordConfirm">Confirm Password</label>
-										<input type="password" class="form-control" name="passwordConfirm" placeholder="Confirm Password">
-										<p id="passwordConfirm" style="color: red;"></p>
+										<input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm Password">
+										<p id="passwordConfirmError" style="color: red;"></p>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="dateOfBirth">Date of Birth</label>
-										<input type="date" class="form-control" name="dateOfBirth" id="dob">
-										<p id="dateOfBirth" style="color: red;"></p>
+										<input type="date" class="form-control" id="dateOfBirth" name = "dateOfBirth">
+										<p id="dateOfBirthError" style="color: red;"></p>
 									</div>
 								</div>
 							</div>
@@ -136,7 +136,7 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="age">Age</label>
-										<input type="number" class="form-control" name="age" placeholder="Age" id="age" disabled>									
+										<input type="number" class="form-control" id="age" placeholder="Age" id="age" disabled>									
 									</div>
 								</div>
 								<div class="col-md-4">
@@ -144,7 +144,7 @@
 										<label for="gender">Gender</label><br>
 										<div class="radio-inline"><label><input type="radio" name="gender" >Male</label></div>
 										<div class="radio-inline"><label><input type="radio" name="gender" >Female</label></div>
-										<p id="gender" style="color: red;"></p>
+										<p id="genderError" style="color: red;"></p>
 									</div>
 								</div>
 							</div>
@@ -152,17 +152,17 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="interest">Interest</label><br>
-										<div class="checkbox-inline"><label><input type="checkbox" name="biking" >Biking</label></div>
-										<div class="checkbox-inline"><label><input type="checkbox" name="reading" >Reading</label></div>
-										<div class="checkbox-inline"><label><input type="checkbox" name="playing" >Playing</label></div>
-										<p id="interest" style="color: red;"></p>
+										<div class="checkbox-inline"><label><input type="checkbox" id="biking" >Biking</label></div>
+										<div class="checkbox-inline"><label><input type="checkbox" id="reading" >Reading</label></div>
+										<div class="checkbox-inline"><label><input type="checkbox" id="playing" >Playing</label></div>
+										<p id="interestError" style="color: red;"></p>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="about">About</label>
-										<textarea class="form-control"  name="about" ></textarea>
-										<p id="about" style="color: red;"></p>
+										<textarea class="form-control"  id="about" ></textarea>
+										<p id="aboutError" style="color: red;"></p>
 									</div>
 								</div>
 							</div>
@@ -170,36 +170,41 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="country">Country</label>		
-										<select class="form-control" name="country" id="country">
-											<!-- <option selected="" value="default">Select Country</option>
-											<option>India</option>
-											<option>USA</option>
-											<option>Australia</option>
-											<option value="other">Other</option> -->
+										<select class="form-control" id="country" id="country">
+										<option selected="" value="default"></option>			
 										</select>
-										<p id="country" style="color: red;"></p>
+										<p id="countryError" style="color: red;"></p>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-										<label for="otherCountry">Other</label>
-										<input type="text" class="form-control" name="otherCountry" placeholder="Mention Country if Selected Other" >
-										<p id="otherCountry" style="color: red;"></p>
+										<label for="state">State</label>
+										<select class="form-control" id="state" id="state">
+										</select>
+										<p id="stateError" style="color: red;"></p>
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
+										<label for="city">City</label>
+										<select class="form-control" id="city" id="city">
+										</select>
+										<p id="cityError" style="color: red;"></p>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
 										<label for="uploadFile">Upload File</label>
-										<input type="file" class="form-control" name="uploadFile" >
-										<p id="uploadFile" style="color: red;"></p>
+										<input type="file" class="form-control" id="uploadFile" >
+										<p id="uploadFileError" style="color: red;"></p>
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-2 col-md-offset-3">
-									<button id="SubmitButton" type="submit" class="btn btn-success" name="submit" value="Submit">Submit</button>
+									<button id="SubmitButton" type="submit" class="btn btn-success" id="submit" value="Submit">Submit</button>
 								</div>
 							</div>
 						</div>

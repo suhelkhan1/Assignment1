@@ -1,3 +1,10 @@
+function setAge() {
+	var date_of_birth = document.form.dateOfBirth.valueAsDate;
+	var today = new Date();
+	var diff = today.getTime() - date_of_birth.getTime();
+	var age = Math.floor(diff/31557600000);
+	$('#age').val(age);
+}
 function formValidate () {
 	var fname = document.form.firstName;
 	var lname = document.form.lastName;
