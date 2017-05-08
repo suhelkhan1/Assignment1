@@ -72,15 +72,15 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="firstName">First Name</label>
-										<input type="text" class="form-control" id="firstName" placeholder="First Name">
-										<p id="firstNameError" style="color: red;"></p>
+										<input type="text" class="form-control" id="firstName" placeholder="First Name"  onblur="appValidations.validateFirstName()">
+										<p id="firstNameError" class="text-danger"></p>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="lastName">Last Name</label>
-										<input type="text" class="form-control" id="lastName" placeholder="Last Name">
-										<p id="lastNameError" style="color: red;"></p>
+										<input type="text" class="form-control" id="lastName" placeholder="Last Name" onblur="appValidations.validateLastName()">
+										<p id="lastNameError" class="text-danger"></p>
 									</div>
 								</div>
 							</div>
@@ -88,15 +88,15 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="phoneNo">Phone No</label>
-										<input type="text" class="form-control" id="phoneNo" placeholder="Phone No">
-										<p id="phoneNoError" style="color: red;"></p>
+										<input type="text" class="form-control" id="phoneNo" placeholder="Phone No" onblur="appValidations.validatePhoneNumber()">
+										<p id="phoneNoError" class="text-danger"></p>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="officeNo">Office No</label>
-										<input type="text" class="form-control" id="officeNo" placeholder="Office No">
-										<p id="officeNoError" style="color: red;"></p>
+										<input type="text" class="form-control" id="officeNo" placeholder="Office No" onblur="appValidations.validateOfficeNumber()">
+										<p id="officeNoError" class="text-danger"></p>
 									</div>
 								</div>
 							</div>
@@ -104,15 +104,15 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="emailInput">Email</label>
-										<input type="email" class="form-control" id="emailInput" placeholder="Email">
-										<p id="emailInputError" style="color: red;"></p>
+										<input type="email" class="form-control" id="emailInput" placeholder="Email" onblur="appValidations.validateEmail()">
+										<p id="emailInputError" class="text-danger"></p>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="passwordInput">Password</label>
-										<input type="password" class="form-control" id="passwordInput" placeholder="Password">
-										<p id="passwordInputError" style="color: red;"></p>
+										<input type="password" class="form-control" id="passwordInput" placeholder="Password" onblur="appValidations.validatePassword()">
+										<p id="passwordInputError" class="text-danger"></p>
 									</div>
 								</div>
 							</div>
@@ -120,15 +120,15 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="passwordConfirm">Confirm Password</label>
-										<input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm Password">
-										<p id="passwordConfirmError" style="color: red;"></p>
+										<input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm Password" onblur="appValidations.validateConfirmPassword()">
+										<p id="passwordConfirmError" class="text-danger"></p>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="dateOfBirth">Date of Birth</label>
-										<input type="date" class="form-control" id="dateOfBirth" name = "dateOfBirth">
-										<p id="dateOfBirthError" style="color: red;"></p>
+										<input type="date" class="form-control" id="dateOfBirth" name = "dateOfBirth" onblur="appValidations.validateDateOfBirth()">
+										<p id="dateOfBirthError" class="text-danger"></p>
 									</div>
 								</div>
 							</div>
@@ -144,7 +144,7 @@
 										<label for="gender">Gender</label><br>
 										<div class="radio-inline"><label><input type="radio" name="gender" >Male</label></div>
 										<div class="radio-inline"><label><input type="radio" name="gender" >Female</label></div>
-										<p id="genderError" style="color: red;"></p>
+										<p id="genderError" class="text-danger"></p>
 									</div>
 								</div>
 							</div>
@@ -155,14 +155,14 @@
 										<div class="checkbox-inline"><label><input type="checkbox" id="biking" >Biking</label></div>
 										<div class="checkbox-inline"><label><input type="checkbox" id="reading" >Reading</label></div>
 										<div class="checkbox-inline"><label><input type="checkbox" id="playing" >Playing</label></div>
-										<p id="interestError" style="color: red;"></p>
+										<p id="interestError" class="text-danger"></p>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="about">About</label>
-										<textarea class="form-control"  id="about" ></textarea>
-										<p id="aboutError" style="color: red;"></p>
+										<textarea class="form-control"  id="about"  onblur="appValidations.validateAbout()"></textarea>
+										<p id="aboutError" class="text-danger"></p>
 									</div>
 								</div>
 							</div>
@@ -173,7 +173,7 @@
 										<select class="form-control" id="country" id="country">
 										<option selected="" value="default"></option>			
 										</select>
-										<p id="countryError" style="color: red;"></p>
+										<p id="countryError" class="text-danger"></p>
 									</div>
 								</div>
 								<div class="col-md-4">
@@ -181,7 +181,7 @@
 										<label for="state">State</label>
 										<select class="form-control" id="state" id="state">
 										</select>
-										<p id="stateError" style="color: red;"></p>
+										<p id="stateError" class="text-danger"></p>
 									</div>
 								</div>
 							</div>
@@ -191,14 +191,14 @@
 										<label for="city">City</label>
 										<select class="form-control" id="city" id="city">
 										</select>
-										<p id="cityError" style="color: red;"></p>
+										<p id="cityError" class="text-danger"></p>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										<label for="uploadFile">Upload File</label>
-										<input type="file" class="form-control" id="uploadFile" >
-										<p id="uploadFileError" style="color: red;"></p>
+										<input type="file" class="form-control" id="uploadFile" onblur="appValidations.validateUploadFile()">
+										<p id="uploadFileError" class="text-danger"></p>
 									</div>
 								</div>
 							</div>

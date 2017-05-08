@@ -12,17 +12,11 @@ var appValidations;
 				_this.submitEvent(event);
 			});
 
-			/*$('input').on('change', function(event) {
-				if( $(this).val() == "" ) {
-			          $(this).parents('input').addClass('alert alert-danger');
-			    }
-			});*/
-
 			$('input').on('blur', function() {
 				if( $(this).val() == "" ) {
-			         $(this).parents.addClass('alert alert-danger');
+			         $(this).addClass('alert alert-danger shake');
 			    } else {
-			    	$(this).parents.removeClass('alert alert-danger');
+			    	$(this).removeClass('alert alert-danger');
 			    }
 			});
 
@@ -85,15 +79,13 @@ var appValidations;
 			$('#age').val(age);
 		},
 		submitEvent: function(event) {
-			/**
-			 * TODO: Call validation functions here.
-			 * */
-			 this.validateLastName();
 			 this.validateFirstName();
+			 this.validateLastName();
 			 this.validatePhoneNumber();
 			 this.validateOfficeNumber();
 			 this.validateEmail();
 			 this.validatePassword();
+			 this.validateConfirmPassword();
 			 this.validateDateOfBirth();
 			 this.validateGender();
 			 this.validateInterest();
@@ -106,11 +98,9 @@ var appValidations;
 
 			if (first_name.val() && first_name.val().match(/^[a-zA-Z]+$/)) {
 				$('#firstNameError').html('');
-				$(this).parent('input').removeClass('alert alert-danger');
 			} else{
-				first_name.focus();
+				/*first_name.focus();*/
 				$('#firstNameError').html('Please enter proper first name.');
-				$(this).parent('input').addClass('alert alert-danger');
 			};
 		},
 		validateLastName: function() {
@@ -119,27 +109,27 @@ var appValidations;
 			if (last_name.val() && last_name.val().match(/^[a-zA-Z]+$/)) {
 				$('#lastNameError').html('');
 			} else{
-				last_name.focus();
+				/*last_name.focus();*/
 				$('#lastNameError').html('Please enter proper last name.');
 			};
 		},
 		validatePhoneNumber: function() {
 			var phone_number = $('#phoneNo');
 
-			if (phone_number.val() && phone_number.val().match(/\+\d{12}/)) {
+			if (phone_number.val() && phone_number.val().match(/^\+\d{12}$/)) {
 				$('#phoneNoError').html('');
 			} else{
-				phone_number.focus();
+				/*phone_number.focus();*/
 				$('#phoneNoError').html('Phone Number must be enter in +911234567890 format');
 			};
 		},
 		validateOfficeNumber: function() {
 			var office_number = $('#officeNo');
 
-			if (office_number.val() && office_number.val().match(/\+\d{12}/)) {
+			if (office_number.val() && office_number.val().match(/^\+\d{12}$/)) {
 				$('#officeNoError').html('');
 			} else{
-				office_number.focus();
+				/*office_number.focus();*/
 				$('#officeNoError').html('Office Number must be enter in +911234567890 format');
 			};
 		},
@@ -149,18 +139,18 @@ var appValidations;
 			if (email.val() && email.val().match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
 				$('#emailInputError').html('');
 			} else{
-				email.focus();
+				/*email.focus();*/
 				$('#emailInputError').html('You have entered an invalid email address');
 			};
 		},
 		validatePassword: function() {
 			var password = $('#passwordInput');
 
-			if (password.val() && password.val().match(/s/)) {
+			if (password.val() && password.val().match(/^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? "]).*$/)) {
 				$('#passwordInputError').html('');
 			} else{
-				password.focus();
-				$('#passwordInputError').html('You have entered an invalid password');
+				/*password.focus();*/
+				$('#passwordInputError').html('Password must contain 8 characters and at least one number, one letter and one unique character such as !#$%&?');
 			};
 		},
 		validateConfirmPassword: function() {
@@ -170,7 +160,7 @@ var appValidations;
 			if (password.val() && confim_password.val() === password.val()) {
 				$('#passwordConfirmError').html('');
 			} else{
-				confim_password.focus();
+				/*confim_password.focus();*/
 				$('#passwordConfirmError').html('Passwords entered does not match');
 			};
 		},
@@ -182,19 +172,7 @@ var appValidations;
 			if (!isNaN(year) && year > 1900 && year < 1999) {
 				$('#dateOfBirthError').html('');
 			} else{
-				bate_of_birth.focus();
-				$('#dateOfBirthError').html('Please enter proper Date of Birth');
-			};
-		},
-		validateDateOfBirth: function() {
-			var bate_of_birth = $('#dateOfBirth');
-			var date = new Date(bate_of_birth.val());
-			var year = date.getFullYear();
-
-			if (!isNaN(year) && year > 1900 && year < 1999) {
-				$('#dateOfBirthError').html('');
-			} else{
-				bate_of_birth.focus();
+				/*bate_of_birth.focus();*/
 				$('#dateOfBirthError').html('Please enter proper Date of Birth');
 			};
 		},
@@ -230,7 +208,7 @@ var appValidations;
 			if (about_you.val() && about_you.val().match(/^[a-z0-9][a-z0-9._\--]*$/)) {
 				$('#aboutError').html('');
 			} else{
-				about_you.focus();
+				/*about_you.focus();*/
 				$('#aboutError').html('Please input correctly');
 			};
 		},
